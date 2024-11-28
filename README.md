@@ -11,53 +11,55 @@ Mosquitto broker
 
 Instalar Mosquitto:
 
-bashCopysudo apt update
-sudo apt install mosquitto
-sudo apt install mosquitto-clients
+--sudo apt update
+--sudo apt install mosquitto
+--sudo apt install mosquitto-clients
 
 Crear y activar entorno virtual:
 
-bashCopypython3 -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 
 Instalar dependencias:
 
-bashCopypip install paho-mqtt
+pip install paho-mqtt
 Estructura del Proyecto
-Copymqtt_project/
-├── mosquitto.conf
-├── publisher.py
-├── subscriber.py
-├── README.md
+mqtt_project/
+mosquitto.conf
+publisher.py
+subscriber.py
+
 
 # Configuración
 
 Crear archivo mosquitto.conf:
 
-Copylistener 1883
+listener 1883
 protocol mqtt
 allow_anonymous true
 persistence false
 log_type all
-Ejecución
 
-Iniciar el broker Mosquitto (Terminal 1):
+# Ejecución
 
-bashCopymosquitto -c mosquitto.conf
+--Iniciar el broker Mosquitto (Terminal 1):
 
-Iniciar el subscriber (Terminal 2):
+  mosquitto -c mosquitto.conf
 
-bashCopypython subscriber.py
+--Iniciar el subscriber (Terminal 2):
 
-Iniciar el publisher (Terminal 3):
+  python subscriber.py
 
-bashCopypython publisher.py
-Verificación
+--Iniciar el publisher (Terminal 3):
+
+   python publisher.py
+   
+# Verificación
 El sistema está funcionando correctamente si:
 
-El publisher muestra mensajes enviados cada 5 segundos
-El subscriber muestra mensajes recibidos y decisiones de control
-Se observan cambios en el estado de luces y cortinas según los valores de luz
+-El publisher muestra mensajes enviados cada 5 segundos
+-El subscriber muestra mensajes recibidos y decisiones de control
+-Se observan cambios en el estado de luces y cortinas según los valores de luz
 
 Detener el Sistema
 
